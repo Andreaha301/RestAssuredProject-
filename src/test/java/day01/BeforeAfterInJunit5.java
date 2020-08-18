@@ -12,6 +12,7 @@ public class BeforeAfterInJunit5 {
         System.out.println("This run before All");
     }
 
+    //Same idea as @BeforeMethod we learned
     @BeforeEach
     public void beforeEachTest(){
         System.out.println("Running before the test");
