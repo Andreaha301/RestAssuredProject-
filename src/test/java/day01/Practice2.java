@@ -1,10 +1,16 @@
 package day01;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 
 // We need two imports for this assertions to work
 // Hamcrest already come with RestAssured dependency
+import javax.swing.*;
+
+import java.util.Arrays;
+import java.util.List;
+
 import static org.hamcrest.Matchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -27,7 +33,8 @@ public class Practice2 {
         // hamcrest use built in matchers to do assertion
         //Couple common ones are:
            // is( some value )
-          //  equalTo( some value) or optionally is ( equalTo( some value) )
+          //  equalTo( some value)
+        //  or optionally is ( equalTo( some value) )
 
         assertThat(num1+num2, is(9) );
         assertThat(num1+num2, equalTo(9));
@@ -57,10 +64,39 @@ public class Practice2 {
         //How to ignore all whitespaces --> In this case the space in  String firstName = "Andrea " ;
         assertThat(firstName, equalToCompressingWhiteSpace("Andrea"));
 
+        // startsWith
+        assertThat(firstName,startsWith("An"));
+
         //We also can use this --> String matchers
         //equalToIgnoringCase()
         // equalToCompressingWhiteSpace()
         // containString, endsWith, startsWith, --> test string matching
+
+
+    }
+
+    @DisplayName("Support for collection")
+    @Test
+    public void test2(){
+
+        List<Integer> numList = Arrays.asList(11,44,3,55,88,5);
+
+        //checking the list size is 6
+        assertThat(numList, hasSize(6));
+        assertThat(numList.size(),is (6)); // --> using hamcrest
+
+        //Checking the list contains 11
+        assertThat(numList, hasItem(11));
+
+        // checking the list contains more than one items: 11,44,3,55,88,5
+        assertThat(numList, contains(11,44,3,55,88,5));
+
+        //Checking the list contains more than one item in any order
+        assertThat(numList, containsInAnyOrder(44,3,11,55,88,5));
+
+
+
+
 
 
     }
