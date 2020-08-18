@@ -3,6 +3,7 @@ package day01;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.* ;
@@ -54,7 +55,8 @@ public class Practice1 {
 
     }
 
-    @Disabled("testinh /Hello endpoint")
+
+    @Disabled("Testing /Hello endpoint")
     @Test
     public void testHello(){
 
@@ -69,8 +71,61 @@ public class Practice1 {
         assertEquals("text/plain;charset=UTF-8", response.header("Content-Type"));
 
         //Testing The Content-Length header value is: 17
-        // response.header("Content-Length") give us a string result so we need to do a String comparation
+        // response.header("Content-Length") give us a string result so we need to do a String comparision
         assertEquals("17", response.header("Content-Length"));
+    }
+
+
+    @DisplayName("Testing Hello endpoint body")
+    @Test
+    public void testingHelloResponseBody(){
+
+        //Get the body and assert the body equal to "Hello from Sparta"
+        Response response = get("http://34.229.100.122:8000/api/hello") ;
+
+        //Getting the body as String using asString method of Response object
+        System.out.println( response.asString() );
+
+        //Getting the body by calling body method --> We need to add .asString() to get "Hello from Sparta"
+        // DO NOT USE toString() --> This method will not give us the content
+        System.out.println( response.body().asString() );
+
+        //Assert the body is Hello from Sparta, length is 17
+        String helloBody = response.asString() ;
+        assertEquals("Hello from Sparta", helloBody);
+    }
+
+
+    @DisplayName("Printing the response body using method")
+    @Test
+    public void printingBody(){
+        Response response = get("http://34.229.100.122:8000/api/hello") ;
+
+        //easy way to print the response body and return at the same time
+        //Prints "Hello from Sparta"
+        response.prettyPrint();
+
+        System.out.println("------------------------------------------------");
+
+        //prints the entire response, it will include all header, status code, body
+        // Most importantly , it return same Response object rather than String like prettyPrint
+        // it will enable you to call more method of response object after peeking
+        // HTTP/1.1 200
+        //Content-Type: text/plain;charset=UTF-8
+        //Content-Length: 17
+        //Date: Tue, 18 Aug 2020 18:39:05 GMT
+        //
+        //Hello from Sparta
+        response.prettyPeek();
+
+        System.out.println("------------------------------------------------");
+
+
+        // I want to see entire response + save the status code into a variable in same statement
+        int statusCode = response.prettyPeek().statusCode();
+        System.out.println("Status code is: " + statusCode);
+
+
     }
 
 
