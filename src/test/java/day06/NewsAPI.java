@@ -52,6 +52,7 @@ public class NewsAPI {
 
         List<String> authors = jp.get("articles.findAll{it.source.id != null}.author");
         System.out.println("authors = " + authors);
+        System.out.println("authors = " + authors.size());
     }
 
 
