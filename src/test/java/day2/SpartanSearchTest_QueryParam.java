@@ -37,7 +37,7 @@ public class SpartanSearchTest_QueryParam {
         then()
                 .log().all()
                 .statusCode(200)
-                .body("numberOfElements", is(3));
+                .body("numberOfElements", is(2));
 
 
 
