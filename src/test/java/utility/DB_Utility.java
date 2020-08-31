@@ -318,7 +318,7 @@ public class DB_Utility {
             rs.beforeFirst();
 
         }catch (SQLException e){
-            System.out.println("ERRROR AT ROW MAP FUNCTION");
+            System.out.println("ERROR AT ROW MAP FUNCTION");
         }
 
         return rowMap;
