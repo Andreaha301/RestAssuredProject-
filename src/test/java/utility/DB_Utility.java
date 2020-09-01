@@ -362,7 +362,7 @@ public class DB_Utility {
         // in order to get whole result cursor must be at before first location !
 
         try {
-            // in order to start from beginning , we should be at beforefirst location
+            // in order to start from beginning , we should be at before first location
             rs.beforeFirst(); // this is for below loop to work
             while (rs.next() == true) { // row iteration
 
@@ -383,16 +383,7 @@ public class DB_Utility {
     }
 
 
-    private static Spartan createRandomSpartanObject() {
-        Faker faker = new Faker();
-        String name   = faker.name().firstName();
-        String gender = faker.demographic().sex();
-        // always getting long number outside range of int to avoid errors
-        long phone    = faker.number().numberBetween(5000000000L,9999999999L);
-        Spartan randomSpartanObject = new Spartan(name,gender,phone);
-        System.out.println("Created Random Spartan Object : " + randomSpartanObject);
-        return randomSpartanObject ;
-    }
+
 
 
 }

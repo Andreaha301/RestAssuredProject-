@@ -15,6 +15,15 @@ public class Spartan {
         this.phone = phone;
     }
 
+    @Override
+    public String toString() {
+        return "Spartan2{" +
+                ", name='" + name + '\'' +
+                ", gender='" + gender + '\'' +
+                ", phone=" + phone +
+                '}';
+    }
+
     public String getName() {
         return name;
     }
