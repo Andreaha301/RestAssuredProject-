@@ -2,6 +2,7 @@ package day9;
 
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -63,6 +64,23 @@ public class ZipDataDriven {
         // If your jsonPath is pointing to an JsonArray yo can count them
         // by calling groovy method called size()
         System.out.println("The size of places array is: " + jp.getInt("places.size()"));
+
+    }
+
+    @Test
+    public void testSingle(){
+
+        Response response = given()
+                                    .pathParam("state", "VA")
+                                    .pathParam("city", "Fairfax")
+                                    .baseUri("http://api.zippopotam.us/us").
+                            when()
+                                    .get("/{state}/{city}")
+                                    .prettyPeek() ;
+
+        // We can use them method to keep chaining your response assertions
+        response.then().statusCode(200) ;
+
 
     }
 
