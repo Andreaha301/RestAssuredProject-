@@ -25,17 +25,18 @@ public class NewsAPI_test2 {
     public void testNews(){
 
         //GET http://newsapi.org/v2/top-headlines?country=us
-        String apiToken = "YOUR TOKEN GOES HERE";
+        String apiToken = "a88d567ed1d848e6ae2c9865a647f3ae";
         // Via the Authorization HTTP header. Bearer
 
         Response response = given()
-                .baseUri("http://newsapi.org") // you can specify baseURI directly here if you only have one request and have no intention ofo sharing with diffferent request
-                .basePath("/v2")
-                .header("Authorization", "Bearer "+apiToken)
-                .queryParam("country","us")
-                .log().all().
-                        when().
-                        get("/top-headlines");
+                                .baseUri("http://newsapi.org") // you can specify baseURI directly here if you only have one request and have no intention ofo sharing with diffferent request
+                                .basePath("/v2")
+                                .header("Authorization", "Bearer "+apiToken)
+                                .queryParam("country","us")
+                                .log().all().
+                             when().
+                                 get("/top-headlines");
+
         JsonPath jp = response.jsonPath() ;
 
         List<String> allAuthor =  jp.getList("articles.author") ;
