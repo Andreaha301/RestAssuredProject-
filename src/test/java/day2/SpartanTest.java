@@ -21,7 +21,7 @@ public class SpartanTest {
         //String spartanURL = "http://34.229.100.122:8000/api/spartans";
 
         //How to set base URl, port, base path so I can reuse them
-        RestAssured.baseURI = "http://34.229.255.26:8000";
+        RestAssured.baseURI = "http://100.24.242.13:8000";
         RestAssured.basePath = "/api" ;
 
         // This way it will create the request URL as is

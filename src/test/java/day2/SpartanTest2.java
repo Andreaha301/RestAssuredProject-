@@ -17,7 +17,7 @@ public class SpartanTest2 {
     @BeforeAll
     public static void setUp(){
 
-        RestAssured.baseURI = "http://34.229.255.26:8000";
+        RestAssured.baseURI = "http://100.24.242.13:8000";
         RestAssured.basePath = "/api" ;
     }
 
@@ -31,7 +31,7 @@ public class SpartanTest2 {
                 .log().all(). // WITH .log().all --> we get all the information from our request including URL
                 // .log().uri(). // With URI() we get only the URL "http://34.229.100.122:8000/api/spartans/20"
         when()
-                .get("/spartans/20").
+                .get("/spartans/1").
                // .prettyPeek().  // --> Using .prettyPeek() here I'll get the Spartan requested in this case /20
         then()
                 .log().all()

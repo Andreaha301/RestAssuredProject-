@@ -17,7 +17,7 @@ public class PutRequestExample {
     @BeforeAll
     public static void init(){
 
-        RestAssured.baseURI = "http://34.229.255.26" ;
+        RestAssured.baseURI = "http://100.24.242.13" ;
         RestAssured.port = 8000 ;
         RestAssured.basePath = "/api" ;
     }
@@ -38,7 +38,7 @@ public class PutRequestExample {
                 .body(updatedBody)
                 .log().all().
         when()
-                .put("/spartans/{id}", 100).
+                .put("/spartans/{id}", 14).
         then()
                 .log().all()
                 .statusCode(204);
@@ -50,7 +50,7 @@ public class PutRequestExample {
     public void testDelete(){
 
         when()
-                .delete("/spartans/{id}", 103).
+                .delete("/spartans/{id}", 14).
          then()
                 .statusCode(204) ;
                // .body( is(empty()));

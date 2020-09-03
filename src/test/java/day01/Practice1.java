@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class Practice1 {
 
     // We are using spartan app that does not require a password
-    //http://34.229.255.26/api/hello
+    //http://100.24.242.13/api/hello
 
     @Test
     public void test1(){
@@ -27,7 +27,7 @@ public class Practice1 {
         //We can directly call the get method
         //After we sent the request, we can save the result into a type called Response
         // To do that we need  this import io.restassured.response.Response;
-        Response response = get("http://34.229.255.26:8000/api/hello") ;
+        Response response = get("http://100.24.242.13:8000/api/hello") ;
 
         //response object store all the information about the response we got
         //like status, statusline, body, headers and so on
@@ -60,7 +60,7 @@ public class Practice1 {
     @Test
     public void testHello(){
 
-        Response response = get("http://34.229.255.26:8000/api/hello") ;
+        Response response = get("http://100.24.242.13:8000/api/hello") ;
 
         //Hover over and select More Actions --> Import statics
         assertEquals(200, response.statusCode() ) ;
@@ -81,7 +81,7 @@ public class Practice1 {
     public void testingHelloResponseBody(){
 
         //Get the body and assert the body equal to "Hello from Sparta"
-        Response response = get("http://34.229.255.26:8000/api/hello") ;
+        Response response = get("http://100.24.242.13:8000/api/hello") ;
 
         //Getting the body as String using asString method of Response object
         System.out.println( response.asString() );
@@ -99,7 +99,7 @@ public class Practice1 {
     @DisplayName("Printing the response body using method")
     @Test
     public void printingBody(){
-        Response response = get("http://34.229.255.26:8000/api/hello") ;
+        Response response = get("http://100.24.242.13:8000/api/hello") ;
 
         //easy way to print the response body and return at the same time
         //Prints "Hello from Sparta"

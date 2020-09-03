@@ -21,7 +21,7 @@ public class PutAndPatch {
     @BeforeAll
     public static void init(){
 
-        RestAssured.baseURI = "http://34.229.255.26" ;
+        RestAssured.baseURI = "http://100.24.242.13" ;
         RestAssured.port = 8000 ;
         RestAssured.basePath = "/api" ;
 

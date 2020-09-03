@@ -15,7 +15,7 @@ public class SpartanTest_Parameters {
     @BeforeAll
     public static void setUp(){
 
-        RestAssured.baseURI = "http://34.229.255.26:8000";
+        RestAssured.baseURI = "http://100.24.242.13:8000";
         RestAssured.basePath = "/api" ;
     }
 
@@ -26,7 +26,7 @@ public class SpartanTest_Parameters {
 
         given()
                 .log().all()
-                .pathParam("id", 20). // Path variable is unique and identify a single data
+                .pathParam("id",8 ). // Path variable is unique and identify a single data
         when()
                 .get("spartans/{id}").
 
@@ -46,7 +46,7 @@ public class SpartanTest_Parameters {
         given()
                 .log().all().
         when()
-                .get("spartans/{id}" , 20).
+                .get("spartans/{id}" , 16).
         then()
                 .statusCode( is(200))
                 .log().body() ;
@@ -60,15 +60,15 @@ public class SpartanTest_Parameters {
         given()
                 .log().all().
         when()
-                .get("spartans/{id}" , 20).
+                .get("spartans/{id}" , 92).
         then()
                 .log().all()
                 .statusCode( is(200))
                 //.body("JSON PATH", is("THE VALUE"))
-                .body("id", is(20))
-                .body("name", is("Lothario"))
-                .body("gender", is("Male"))
-                .body("phone",is(7551551687L));
+                .body("id", is(92))
+                .body("name", is("Caitlin"))
+                .body("gender", is("Female"))
+                .body("phone",is(6911121800L));
 
     }
 
