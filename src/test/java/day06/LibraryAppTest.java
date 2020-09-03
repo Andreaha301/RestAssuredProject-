@@ -35,9 +35,9 @@ public class LibraryAppTest {
                 then()
                 .log().all()
                 .statusCode(200)
-                .body("book_count",is("985") )
-                .body("borrowed_books",is("601"))
-                .body("users",is("5042") )
+                .body("book_count",is("1010") )
+                .body("borrowed_books",is("602"))
+                .body("users",is("5226") )
         ;
         ;
 

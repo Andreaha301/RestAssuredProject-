@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RestAssuredMethodChaining {
 
-    @DisplayName("First Atemp for chaining")
+    @DisplayName("First Attempt for chaining")
     @Test
     public void chaining_Methods_Test1(){
 
@@ -28,7 +28,7 @@ public class RestAssuredMethodChaining {
         // VALIDATE SOMETHING HERE
 
         when().
-                get("http://34.229.100.122:8000/api/hello"). // --> Sending a request to this URL
+                get("http://34.229.255.26:8000/api/hello"). // --> Sending a request to this URL
         then().                                 //Assertions start HERE
                 statusCode(200).               // --> Asserting status code is 200
         header("Content-Length", "17") ; // Asserting header "Content-Length" is "17"
@@ -42,7 +42,7 @@ public class RestAssuredMethodChaining {
     public void testingWithMatcher(){
 
         when().
-                get("http://34.229.100.122:8000/api/hello"). // --> Sending a request to this URL
+                get("http://34.229.255.26:8000/api/hello"). // --> Sending a request to this URL
                 prettyPeek().
         then().                                 //Assertions start HERE
                 statusCode(200).               // --> Asserting status code is 200
@@ -70,7 +70,7 @@ public class RestAssuredMethodChaining {
         given(). //--> When using given() all our request specific information like header, query param, path var, body
                 header("Accept", "application/xml").
         when().
-                get("http://34.229.100.122:8000/api/spartans").
+                get("http://34.229.255.26:8000/api/spartans").
                 prettyPeek().
         then().
                 statusCode(200) ;

@@ -64,6 +64,7 @@ public class LibraryApp_ReusingThe_Specification_Shorter {
 
     /**
      * Practice the De-Serialization using the same test
+     *
      * get the Map<String,String> object out of the response of GET /dashboard_stats
      * get the List<Category> object from the response of GET /get_book_categories
      * get the List<User> object from the response of GET /get_all_users
@@ -75,10 +76,26 @@ public class LibraryApp_ReusingThe_Specification_Shorter {
     @Test
     public void testLibrary(){
 
+        //get the List<Category> object from the response of GET /get_book_categories
         Response response = when().get("/get_book_categories") ;
 
-        List<Category> categoryList = response.jsonPath().getList("");
+        List<Category> categoryList = response.jsonPath().getList("", Category.class);
         System.out.println("categoryList = " + categoryList);
+
+        // Above code is great, but what if I wanted to store each category as Map rather than POJO
+        // Each category is Key - Value pair -->MAP
+        // and we have a many category --> List<Map>
+        //JasonPath methods always try to help to convert the types where it can
+        // in this case, each category in jsonArray we tried to store into map then get a list out it
+        // and Jackson databind take care of all conversations
+
+           //Using any of the ListMap option -- We still get the same result or also with POJO above we get same result
+
+        //List<Map> categoryMapList = response.jsonPath().getList("");
+        //List<Map<String,String>> categoryMapList = response.jsonPath().getList("");
+        List<Map<Integer,String>> categoryMapList = response.jsonPath().getList("");
+        System.out.println("categoryMapList = " + categoryMapList);
+
 
     }
 
@@ -96,12 +113,12 @@ public class LibraryApp_ReusingThe_Specification_Shorter {
     }
 
 
-    // Get the Map<String, String> object out the response of GET /dashboard_stats
+
     @DisplayName("Testing GET /dashboard_stats Endpoint with spec")
     @Test
     public void testGet_Dashboard_stats(){
 
-
+        // Get the Map<String, String> object out the response of GET /dashboard_stats
         Response response = when().get(" /dashboard_stats").prettyPeek();
 
         // if there is no path needed to get to what you are looking for

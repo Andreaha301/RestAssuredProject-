@@ -4,7 +4,6 @@ import lombok.*;
 
 // TODO Country POJO class that have the same encapsulated field as Countries table
 
-
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor

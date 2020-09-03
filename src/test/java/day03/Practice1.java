@@ -15,7 +15,7 @@ public class Practice1 {
     // if we do not make it static it does not work because that's how it's defined in the doc
     public static void init(){
         // example of setting the port separately from baseURI
-        RestAssured.baseURI = "http://34.229.100.122" ;
+        RestAssured.baseURI = "http://34.229.255.26" ;
         RestAssured.port = 8000 ;
         RestAssured.basePath = "/api" ;
     }
