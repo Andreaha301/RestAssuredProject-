@@ -2,6 +2,7 @@ package day12;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
+import io.restassured.response.Response;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -40,7 +41,10 @@ public class XMLResponseTest {
                 .statusCode(200)
                 .contentType(ContentType.XML)
                 // The body must match, asn the value is ALWAYS String in XML
-                .body("Response.Count", is("2")) ;
+                .body("Response.Count", is("2"))
+                .body("Response.Message", is("Results returned successfully"))
+                .body("Response.Results.MakesForMfg[0].Make_ID", is("474"))
+                .body("Response.Results.MakesForMfg[1].Make_Name", is("ACURA")) ;
 
     }
 
