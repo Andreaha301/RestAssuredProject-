@@ -66,8 +66,6 @@ public class OpenMovieDB_XML {
         System.out.println("supermanMovieList = " + supermanMovieList);
         supermanMovieList.forEach(System.out::println);
 
-
-
     }
 
 
